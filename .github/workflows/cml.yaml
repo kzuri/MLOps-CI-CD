@@ -26,6 +26,9 @@ jobs:
           
           echo "\n## Model Performance" >> report.md
           
+          cml-publish model_results.png --md >> report.md    
+          cml-send-comment report.md
+          
       - name: Get New Files
         run: |
           git status -uno
