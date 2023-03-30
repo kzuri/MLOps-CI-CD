@@ -25,8 +25,14 @@ jobs:
           cat metrics.txt >> report.md
           
           echo "\n## Model Performance" >> report.md
-          echo "Model performance metrics are on the plot below." >> report.md
           
-          cml-publish model_results.png --md >> report.md
+      - name: Get New Files
+        run: |
+          git status -uno
           
-          cml-send-comment report.md
+      - uses: EndBug/add-and-commit@v7
+        with:
+          add: report.md
+          author_name: GithubActions States Update
+          author_email: pateldevarsh1206@gmail.com
+          message: "Adding files"
